@@ -1,0 +1,110 @@
+import { useState, useCallback } from 'react'
+
+function useLocalState(key, initial) {
+  const [val, setVal] = useState(() => {
+    try {
+      const stored = localStorage.getItem(key)
+      return stored ? JSON.parse(stored) : initial
+    } catch {
+      return initial
+    }
+  })
+  const set = useCallback((v) => {
+    setVal(prev => {
+      const next = typeof v === 'function' ? v(prev) : v
+      localStorage.setItem(key, JSON.stringify(next))
+      return next
+    })
+  }, [key])
+  return [val, set]
+}
+
+export function useStore() {
+  // My routine — array of classes
+  // { id, name, color, room, days: ['Mon','Tue',...], startTime, endTime, notes }
+  const [classes, setClasses] = useLocalState('mara_classes', [])
+
+  // Deadlines
+  // { id, title, subject, date, priority: 'high'|'medium'|'low', done, notes }
+  const [deadlines, setDeadlines] = useLocalState('mara_deadlines', [])
+
+  // Friends
+  // { id, name, color, shareCode, classes: [...same as above] }
+  const [friends, setFriends] = useLocalState('mara_friends', [])
+
+  // Notification permission granted
+  const [notifGranted, setNotifGranted] = useLocalState('mara_notif', false)
+
+  // ── Classes ──────────────────────────────────────────
+  const addClass = (cls) => {
+    const id = crypto.randomUUID()
+    setClasses(prev => [...prev, { ...cls, id }])
+    return id
+  }
+  const updateClass = (id, data) =>
+    setClasses(prev => prev.map(c => c.id === id ? { ...c, ...data } : c))
+  const deleteClass = (id) =>
+    setClasses(prev => prev.filter(c => c.id !== id))
+
+  // ── Deadlines ─────────────────────────────────────────
+  const addDeadline = (dl) => {
+    const id = crypto.randomUUID()
+    setDeadlines(prev => [...prev, { ...dl, id, done: false }])
+    return id
+  }
+  const updateDeadline = (id, data) =>
+    setDeadlines(prev => prev.map(d => d.id === id ? { ...d, ...data } : d))
+  const deleteDeadline = (id) =>
+    setDeadlines(prev => prev.filter(d => d.id !== id))
+  const toggleDeadline = (id) =>
+    setDeadlines(prev => prev.map(d => d.id === id ? { ...d, done: !d.done } : d))
+
+  // ── Friends ───────────────────────────────────────────
+  const addFriend = (friend) => {
+    const id = crypto.randomUUID()
+    setFriends(prev => [...prev, { ...friend, id }])
+    return id
+  }
+  const updateFriend = (id, data) =>
+    setFriends(prev => prev.map(f => f.id === id ? { ...f, ...data } : f))
+  const deleteFriend = (id) =>
+    setFriends(prev => prev.filter(f => f.id !== id))
+  const addFriendClass = (friendId, cls) => {
+    const cid = crypto.randomUUID()
+    setFriends(prev => prev.map(f =>
+      f.id === friendId
+        ? { ...f, classes: [...(f.classes || []), { ...cls, id: cid }] }
+        : f
+    ))
+  }
+  const deleteFriendClass = (friendId, classId) => {
+    setFriends(prev => prev.map(f =>
+      f.id === friendId
+        ? { ...f, classes: (f.classes || []).filter(c => c.id !== classId) }
+        : f
+    ))
+  }
+
+  // ── Share code generation ─────────────────────────────
+  const generateShareCode = () => {
+    const data = { classes, generatedAt: Date.now(), version: 1 }
+    return btoa(JSON.stringify(data))
+  }
+
+  const importFromCode = (code) => {
+    try {
+      const data = JSON.parse(atob(code))
+      return data.classes || []
+    } catch {
+      return null
+    }
+  }
+
+  return {
+    classes, addClass, updateClass, deleteClass,
+    deadlines, addDeadline, updateDeadline, deleteDeadline, toggleDeadline,
+    friends, addFriend, updateFriend, deleteFriend, addFriendClass, deleteFriendClass,
+    generateShareCode, importFromCode,
+    notifGranted, setNotifGranted,
+  }
+}
