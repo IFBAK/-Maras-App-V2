@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { SpeedInsights } from '@vercel/speed-insights/react'
 import { useStore } from './hooks/useStore'
 import { useToast } from './hooks/useToast'
 import BottomNav from './components/BottomNav'
@@ -129,6 +130,7 @@ export default function App() {
       {renderPage()}
       <BottomNav active={tab} onChange={setTab} />
       {toast && <div className="toast">{toast}</div>}
+      <SpeedInsights />
     </>
   )
 }
