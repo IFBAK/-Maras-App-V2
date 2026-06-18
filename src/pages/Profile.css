@@ -1,0 +1,18 @@
+.profile-page { display:flex; flex-direction:column; padding-bottom:24px }
+.back-link { display:flex; align-items:center; gap:4px; color:var(--txt-2); font-size:13px; font-weight:500 }
+.back-link:hover { color:var(--txt) }
+.text-action { font-size:12.5px; font-weight:600; color:var(--accent) }
+.text-action.muted { color:var(--txt-3); font-weight:500 }
+
+.profile-hero { display:flex; flex-direction:column; align-items:center; gap:9px; padding:22px 0 32px; border-bottom:1px solid var(--hairline); margin-bottom:6px }
+.ph-avatar { width:64px; height:64px; border-radius:50%; border:1px solid rgba(192,132,252,.35); background:rgba(192,132,252,.06); color:var(--accent); display:flex; align-items:center; justify-content:center; font-size:27px; font-weight:500 }
+.ph-name { font-size:24px; font-weight:500; margin-top:4px }
+.ph-meta { font-size:13px; color:var(--txt-2) }
+
+.profile-fields { display:flex; flex-direction:column }
+.pf-row { display:flex; align-items:center; justify-content:space-between; gap:14px; padding:15px 0; border-bottom:1px solid var(--hairline) }
+.pf-row:last-child { border-bottom:none }
+.pf-label { font-size:10.5px; font-weight:600; letter-spacing:.1em; text-transform:uppercase; color:var(--txt-3); flex-shrink:0 }
+.pf-value { font-size:14.5px; color:var(--txt); text-align:right }
+.pf-empty { color:var(--txt-3) }
+.pf-input { width:auto; max-width:180px; text-align:right; padding:6px 10px; font-size:13.5px }
