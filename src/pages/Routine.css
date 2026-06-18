@@ -1,0 +1,35 @@
+.routine-page { display:flex; flex-direction:column; gap:0; padding-bottom:16px; height:100% }
+
+/* ── Week grid — refined, hairline-based ── */
+.week-grid-wrap { display:flex; flex-direction:column; flex:1; overflow:hidden; border:1px solid var(--hairline); border-radius:var(--r-md) }
+
+.wg-header { display:grid; grid-template-columns:42px repeat(7,1fr); border-bottom:1px solid var(--hairline); flex-shrink:0; padding-bottom:2px }
+.wg-time-col { width:42px; flex-shrink:0 }
+.wg-day-hd { padding:10px 4px; text-align:center; font-size:10.5px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; color:var(--txt-3) }
+.wg-day-hd.today { color:var(--accent) }
+
+.wg-body { display:grid; grid-template-columns:42px repeat(7,1fr); overflow-y:auto; overflow-x:hidden; flex:1; max-height:calc(100vh - 230px) }
+.wg-time-labels { position:relative }
+.wg-hour-label { position:absolute; right:6px; font-size:9.5px; color:var(--txt-3); font-family:var(--mono); transform:translateY(-50%); white-space:nowrap }
+
+.wg-col { border-left:1px solid var(--hairline); position:relative }
+.wg-col.today { background:rgba(192,132,252,.025) }
+.wg-hline { position:absolute; left:0; right:0; border-top:1px solid var(--hairline); pointer-events:none }
+
+.wg-block { position:absolute; left:3px; right:3px; background:var(--c-bg); border-left:2px solid var(--c); border-radius:4px; padding:4px 6px; cursor:pointer; overflow:hidden; transition:opacity .12s }
+.wg-block:hover { opacity:.78 }
+.wgb-code { font-size:10.5px; font-weight:700; color:var(--c); font-family:var(--mono); white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+.wgb-label { font-size:9.5px; color:var(--txt-3); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis }
+
+/* ── List view ── */
+.list-view { display:flex; flex-direction:column; gap:26px; padding-bottom:8px }
+.lv-group { display:flex; flex-direction:column }
+.lv-day-hd { font-size:10.5px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--txt-3); padding-bottom:10px; border-bottom:1px solid var(--hairline) }
+.lv-day-hd.today { color:var(--accent) }
+.lv-row { cursor:pointer; gap:13px }
+.lv-bar { width:3px; height:34px; border-radius:2px; flex-shrink:0 }
+.lv-info { flex:1; min-width:0 }
+.lv-top { display:flex; align-items:center; gap:9px; margin-bottom:3px }
+.lv-code { font-size:14px; font-weight:700; font-family:var(--mono) }
+.lv-type { font-size:10px; font-weight:600; letter-spacing:.05em; text-transform:uppercase; color:var(--txt-3); font-family:var(--mono) }
+.lv-meta { font-size:12.5px; color:var(--txt-2) }
