@@ -1,0 +1,89 @@
+.deadlines-page { padding-bottom: 40px }
+
+.dl-header { display: flex; align-items: flex-start; justify-content: space-between; padding: 20px 0 16px }
+.page-title { font-size: 26px; font-weight: 800; letter-spacing: -.03em }
+.page-sub { font-size: 13px; color: var(--muted); margin-top: 3px }
+
+.dl-filter-row { display: flex; gap: 8px; margin-bottom: 18px; overflow-x: auto; padding-bottom: 4px }
+.dl-filter-row::-webkit-scrollbar { display: none }
+
+.dl-list { display: flex; flex-direction: column; gap: 10px }
+
+.dl-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--r-lg); overflow: hidden;
+  transition: all .2s; border-left: 3px solid var(--card-color, var(--primary));
+}
+.dl-card:hover { background: rgba(255,255,255,0.06); transform: translateX(2px) }
+.dl-card.done { opacity: 0.55 }
+.dl-card.urgent { box-shadow: 0 0 20px rgba(248,113,113,0.15); border-color: var(--urgent) }
+.dl-card.urgent { border-left-color: var(--urgent) }
+
+.dl-card-main { display: flex; align-items: center; justify-content: space-between; padding: 14px 14px 10px; cursor: pointer }
+.dl-card-left { display: flex; align-items: center; gap: 12px; flex: 1; min-width: 0 }
+.dl-check {
+  width: 24px; height: 24px; border-radius: 50%; border: 2px solid; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center; transition: all .2s; cursor: pointer;
+}
+.dl-check:hover { transform: scale(1.1) }
+.dl-card-info { flex: 1; min-width: 0 }
+.dl-card-title { font-size: 14.5px; font-weight: 600; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 4px }
+.dl-done .dl-card-title { text-decoration: line-through; color: var(--muted) }
+.dl-card-meta { display: flex; align-items: center; gap: 8px }
+.dl-type-badge { font-size: 11.5px; color: var(--muted) }
+
+.dl-card-right { display: flex; align-items: center; gap: 8px; flex-shrink: 0 }
+
+.priority-badge {
+  display: flex; align-items: center; gap: 3px; font-size: 10px; font-weight: 800;
+  padding: 3px 7px; border-radius: 99px; border: 1px solid; letter-spacing: .04em;
+}
+
+.dl-card-bar { height: 3px; background: rgba(255,255,255,0.05); margin: 0 14px }
+.dl-card-progress { height: 100%; border-radius: 99px; transition: width .5s; box-shadow: 0 0 8px var(--primary) }
+
+.dl-card-expanded { padding: 10px 14px 14px; border-top: 1px solid rgba(255,255,255,0.06) }
+.dl-expand-row { display: flex; gap: 16px; margin-bottom: 10px }
+.dl-expand-item { display: flex; align-items: center; gap: 5px; font-size: 12.5px; color: var(--txt2) }
+.dl-date-sm { color: var(--muted); font-size: 11.5px }
+.dl-desc { font-size: 13px; color: var(--txt2); line-height: 1.55; margin-bottom: 12px }
+
+.dl-progress-row { display: flex; align-items: center; gap: 10px; margin-bottom: 12px }
+.dl-prog-label { font-size: 11px; color: var(--muted); font-weight: 600; white-space: nowrap }
+.dl-slider {
+  flex: 1; -webkit-appearance: none; appearance: none;
+  height: 5px; border-radius: 99px;
+  background: linear-gradient(90deg, var(--thumb-color, var(--primary)) var(--val, 0%), rgba(255,255,255,0.1) var(--val, 0%));
+  outline: none; border: none; padding: 0;
+}
+.dl-slider::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 16px; height: 16px; border-radius: 50%;
+  background: var(--thumb-color, var(--primary));
+  box-shadow: 0 0 8px var(--thumb-color, var(--primary)); cursor: pointer;
+}
+.dl-prog-val { font-size: 12px; font-weight: 700; color: var(--txt2); min-width: 32px; text-align: right }
+.dl-actions { display: flex; align-items: center; justify-content: space-between }
+
+.dl-empty {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 12px; padding: 60px 0; color: var(--muted);
+}
+.dl-empty p { font-size: 15px }
+
+/* Subtasks */
+.subtask-panel { margin-top: 12px; padding-top: 12px; border-top: 1px solid rgba(255,255,255,0.06); }
+.subtask-head { display: flex; align-items: center; gap: 6px; margin-bottom: 10px; }
+.subtask-label { font-size: 11px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: .08em; flex: 1; }
+.subtask-count { font-size: 11px; color: var(--primary); font-weight: 700; }
+.subtask-defaults { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.subtask-chip { font-size: 11px; padding: 4px 10px; border-radius: 99px; border: 1px dashed var(--border2); color: var(--muted); background: rgba(255,255,255,0.03); transition: all .15s; }
+.subtask-chip:hover { border-color: var(--primary); color: var(--primary); }
+.subtask-item { display: flex; align-items: center; gap: 8px; padding: 5px 0; border-bottom: 1px solid rgba(255,255,255,0.04); }
+.subtask-item.done .subtask-title { text-decoration: line-through; color: var(--muted); }
+.subtask-check { width: 16px; height: 16px; border-radius: 50%; border: 1.5px solid; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: all .2s; }
+.subtask-title { flex: 1; font-size: 13px; color: var(--txt2); }
+.subtask-del { opacity: 0; color: var(--muted); padding: 2px; transition: opacity .15s; }
+.subtask-item:hover .subtask-del { opacity: 1; }
+.subtask-add { display: flex; gap: 8px; margin-top: 8px; align-items: center; }
+.subtask-input { flex: 1; padding: 7px 10px; font-size: 12px; }
+.dl-subtask-pill { display: inline-flex; align-items: center; gap: 3px; font-size: 10px; color: var(--primary); background: rgba(217,70,239,0.1); padding: 1px 6px; border-radius: 99px; }

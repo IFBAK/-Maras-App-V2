@@ -1,0 +1,38 @@
+.att-page { padding: 20px 16px 0; }
+.att-header { margin-bottom: 16px; }
+
+.att-overall {
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  border-radius: var(--r-md); padding: 20px 16px; text-align: center; margin-bottom: 16px;
+}
+.att-overall-score { font-size: 52px; font-weight: 900; font-family: var(--font-display); line-height: 1; }
+.att-overall-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .1em; margin: 4px 0 10px; }
+.att-overall-stats { display: flex; justify-content: center; gap: 16px; font-size: 12px; color: var(--txt2); margin-bottom: 12px; }
+
+.att-bar-track { height: 6px; background: rgba(255,255,255,0.07); border-radius: 99px; overflow: hidden; }
+.att-bar-fill  { height: 100%; border-radius: 99px; transition: width .6s; }
+
+.att-list { display: flex; flex-direction: column; gap: 12px; }
+.att-card {
+  background: rgba(255,255,255,0.03); border: 1px solid var(--border);
+  border-left: 3px solid var(--cc); border-radius: var(--r-md); padding: 14px;
+}
+.att-card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.att-card-code { font-size: 14px; font-weight: 700; margin-bottom: 2px; }
+.att-card-name { font-size: 12px; color: var(--muted); }
+.att-card-pct  { font-size: 22px; font-weight: 900; }
+
+.att-card-stats { display: flex; gap: 12px; font-size: 12px; color: var(--txt2); margin: 8px 0; flex-wrap: wrap; align-items: center; }
+.att-warn { display: flex; align-items: center; gap: 4px; color: var(--warn); font-weight: 600; }
+
+.att-card-btns { display: flex; gap: 8px; margin-top: 10px; }
+.att-btn { display: flex; align-items: center; gap: 4px; padding: 7px 12px; border-radius: var(--r-sm); font-size: 12px; font-weight: 600; }
+.att-present { background: rgba(52,211,153,0.12); color: #34D399; border: 1px solid rgba(52,211,153,0.25); }
+.att-absent  { background: rgba(248,113,113,0.12); color: #F87171; border: 1px solid rgba(248,113,113,0.25); }
+.att-edit    { background: rgba(255,255,255,0.05); color: var(--muted); border: 1px solid var(--border); margin-left: auto; }
+
+.att-warning-banner {
+  display: flex; align-items: center; gap: 10px; margin-top: 12px;
+  background: rgba(251,191,36,0.08); border: 1px solid rgba(251,191,36,0.25);
+  border-radius: var(--r-md); padding: 12px 14px; font-size: 13px; color: var(--warn);
+}

@@ -1,0 +1,42 @@
+.nb-wrap { position: relative; }
+.nb-btn {
+  position: relative; width: 36px; height: 36px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255,255,255,0.06); border: 1px solid var(--border);
+  color: var(--txt2); transition: all .2s;
+}
+.nb-btn:hover { background: rgba(255,255,255,0.1); }
+.nb-badge {
+  position: absolute; top: -3px; right: -3px;
+  background: var(--urgent); color: #fff; font-size: 9px; font-weight: 800;
+  min-width: 16px; height: 16px; border-radius: 99px;
+  display: flex; align-items: center; justify-content: center; padding: 0 3px;
+  border: 2px solid var(--bg);
+}
+.nb-overlay { position: fixed; inset: 0; z-index: 148; }
+.nb-dropdown {
+  position: absolute; right: 0; top: 44px; width: 300px;
+  background: var(--surface2); border: 1px solid var(--border2);
+  border-radius: var(--r-lg); box-shadow: 0 12px 48px rgba(0,0,0,0.6);
+  z-index: 149; overflow: hidden;
+  animation: nbFade .15s ease;
+}
+@keyframes nbFade { from { opacity:0; transform:translateY(-6px) } to { opacity:1; transform:translateY(0) } }
+.nb-head { display: flex; justify-content: space-between; align-items: center; padding: 12px 14px 10px; border-bottom: 1px solid var(--border); }
+.nb-head-title { font-size: 13px; font-weight: 700; }
+.nb-action { font-size: 11px; color: var(--muted); }
+.nb-action:hover { color: var(--txt2); }
+.nb-empty { text-align: center; padding: 24px 16px; color: var(--muted); font-size: 13px; }
+.nb-list { max-height: 340px; overflow-y: auto; }
+.nb-item {
+  display: flex; align-items: flex-start; gap: 10px; padding: 11px 14px;
+  cursor: pointer; transition: background .15s; border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.nb-item:hover { background: rgba(255,255,255,0.04); }
+.nb-item.read { opacity: .5; }
+.nb-icon { font-size: 18px; flex-shrink: 0; margin-top: 1px; }
+.nb-content { flex: 1; min-width: 0; }
+.nb-title { font-size: 12px; font-weight: 700; margin-bottom: 2px; }
+.nb-body { font-size: 12px; color: var(--txt2); line-height: 1.4; }
+.nb-time { font-size: 10px; color: var(--muted); margin-top: 3px; }
+.nb-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--primary); flex-shrink: 0; margin-top: 5px; }
